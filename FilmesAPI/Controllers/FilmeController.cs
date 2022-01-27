@@ -1,15 +1,15 @@
 ﻿using FilmesAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FilmesAPI.Controllers
+namespace FilmesApi.Controllers
 {
-
     [ApiController]
-    [Route("[Controller]")]
+    [Route("[controller]")]
     public class FilmeController : ControllerBase
     {
         private static List<Filme> filmes = new List<Filme>();
@@ -24,7 +24,7 @@ namespace FilmesAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult RecuperaFilme()
+        public IActionResult RecuperaFilmes()
         {
             return Ok(filmes);
         }
@@ -33,7 +33,7 @@ namespace FilmesAPI.Controllers
         public IActionResult RecuperaFilmesPorId(int id)
         {
             Filme filme = filmes.FirstOrDefault(filme => filme.Id == id);
-            if (filme != null)
+            if(filme != null)
             {
                 return Ok(filme);
             }
